@@ -23,6 +23,9 @@ if [ -e "$sub" ] ; then
     echo "$sub already exists"
     exit
 fi
+if [ "$TAG" != "" ] ; then
+    set_all_versions "$TAG"
+fi
 
 mkdir "$sub"
 cd "$sub"
