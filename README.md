@@ -1,4 +1,16 @@
 
+# The "tools" folder
+
+It contains a bunch of shell files:
+- `snapshot-lessons.sh`: the only *runnable* script
+- `configuration-tools.sh`: some tools (bash variables and functions)
+- `configuration.sh`: the default configuration
+- `example-configuration-override.sh`: an example custom configuraton (see test2 below)
+
+
+
+# Other folders are releases
+
 The "test1" folder has automatically taken the gh-pages branch from each repository and it has been generated with:
 
     ./tools/snapshot-lessons.sh test1
