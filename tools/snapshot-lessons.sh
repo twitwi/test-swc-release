@@ -27,12 +27,21 @@ fi
 mkdir "$sub"
 cd "$sub"
 for lesson in $(all_lessons) ; do
+    echo "$lesson" >> .lessons
+    echo "url: ${giturls[$lesson]}" >> .lessons
+    echo "version: ${gitvers[$lesson]}" >> .lessons
     git clone "${giturls[$lesson]}" "$lesson"
     cd "$lesson"
     git checkout "${gitvers[$lesson]}"
-    make -j 4 preview # to be replaced by jekyll, later (with maybe an autodetect)
+    echo "sha1: $(git rev-parse HEAD)" >> ../.lessons
+    # build
+    make -j 4 preview
+    # ^ to be replaced by jekyll, later (with maybe an autodetect)
+    # cleanup
     rm -rf .git
-    cleanup_lesson
+    rm -rf _layouts
+    rm -rf _includes
+    #
     cd -
 done
 cd -
