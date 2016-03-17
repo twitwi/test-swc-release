@@ -1,14 +1,29 @@
 #!/bin/bash
 
-set -e
+### Script setup
 
+set -e
 W=$(dirname $(readlink -f $0))
-. $W/configuration.sh
 
 if [ "$(pwd)" = "$W" ] ; then
     echo "This script should probably not be run run from the $W folder, but rather from its parent (or somewhere else)."
     exit
 fi
+
+
+### Configuration
+
+. $W/configuration-tools.sh
+# simple way to have a local (test) configuration
+if [ -f "$CONFIGURATION" ] ; then
+    . $CONFIGURATION
+else
+    # default repositories configuration
+    . $W/configuration.sh
+fi
+
+
+### Parameters and environment
 
 function usage() {
     echo "$0 dirname"
@@ -27,6 +42,9 @@ if [ "$TAG" != "" ] ; then
     set_all_versions "$TAG"
 fi
 
+
+### Go
+
 mkdir "$sub"
 cd "$sub"
 for lesson in $(all_lessons) ; do
@@ -39,8 +57,10 @@ for lesson in $(all_lessons) ; do
     git checkout "${gitvers[$lesson]}"
     echo "sha1: $(git rev-parse HEAD)" >> ../.lessons
     # build
-    make -j 4 preview
-    # ^ to be replaced by jekyll, later (with maybe an autodetect)
+    if [ -f .nojekyll ] ; then
+        make -j 4 preview
+        # else, use jekyll (if we port lessons)
+    fi
     # cleanup
     rm -rf .git
     rm -rf _layouts
