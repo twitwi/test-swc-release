@@ -27,6 +27,7 @@ fi
 mkdir "$sub"
 cd "$sub"
 for lesson in $(all_lessons) ; do
+    echo "<li><a href='$lesson'>$lesson</a></li>" >> index.html
     echo "$lesson" >> .lessons
     echo "url: ${giturls[$lesson]}" >> .lessons
     echo "version: ${gitvers[$lesson]}" >> .lessons
