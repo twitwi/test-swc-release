@@ -23,7 +23,7 @@ The "5.3" folder is taken from the tags v5.3 from each repository and it has bee
     git add 5.3
     git push
 
-The "test2" folder illustrates custom configurations and uses v5.3 from two lessons + the D3 lesson in its latest version. It has been generated with:
+The "test2" folder illustrates custom configurations and uses v5.3 from two lessons + the D3 lesson in its latest version. It has been generated with a [custom configuration](https://github.com/twitwi/test-swc-release/blob/gh-pages/tools/example-configuration-override.sh):
 
     CONFIGURATION=tools/example-configuration-override.sh  ./tools/snapshot-lessons.sh test2
     git add test2
