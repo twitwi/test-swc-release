@@ -1,0 +1,12 @@
+python-novice-inflammation
+url: https://github.com/swcarpentry/python-novice-inflammation.git
+version: v5.3
+sha1: 81e8aebe4c6d82a9d3a5d70e833ae6cd265eb64d
+d3
+url: https://github.com/IsaKiko/D3-visualising-data.git
+version: gh-pages
+sha1: fd957fff87505a4362f6dff902227fe87903e860
+shell-novice
+url: https://github.com/swcarpentry/shell-novice.git
+version: v5.3
+sha1: aea20f16f57988e026f818c948b5d05f23c738b2
